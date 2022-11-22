@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap5-2-2.css}" 
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/headerNav.css}" />
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css?fbclid=IwAR1YsW4Cd3uJltNc6k1kJ8R9VzNjmSXk9rjmW32BPoA6LWxNrZBCUY-D4i8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+    <title>Header-Nav</title>
+</head>
+<body>
+
+
+
+
+
+
+<!--Navigation-->
+<div class="navigation" th:fragment="headerNav">
+ <!-- Brand: Direct Child of ".nav-item" -->
+ <nav class="navbar nav-body">
+    <div class="left">
+        <ul>
+            <li class="nav-item">
+               <a class="nav-link home" href="#">
+               <img th:src="@{/image/home.png}" style="width:35px;">
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Dò vé</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Thống kê</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#">Trực tiếp</a>
+            </li>
+         </ul>
+    </div>
+    
+    <div class="right">
+        <ul>
+            <!--Login-->
+            <li class="nav-item">
+               <a class="nav-link" th:href="@{/login}">
+                <p>Đăng nhập</p>
+               </a>
+            </li>
+            <!--Register-->
+            <li class="nav-item">
+               <a class="nav-link" th:href="@{/register}">
+                <p>Đăng ký</p>
+               </a>
+            </li>
+         </ul>
+    </div>
+ </nav>
+
+
+<!--2-->
+
+</div>
+
+
+
+
+
+
+<!-- <script src="js/headerfooter.js"></script> -->
+
+
+</body>
+</html>

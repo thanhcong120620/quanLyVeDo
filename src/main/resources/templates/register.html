@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap5-2-2.css}" 
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/register.css}" />
+    
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css?fbclid=IwAR1YsW4Cd3uJltNc6k1kJ8R9VzNjmSXk9rjmW32BPoA6LWxNrZBCUY-D4i8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+    <title>Register Admin</title>
+</head>
+
+<body id="particles-js">
+
+<div class="bg_image">
+  <img th:src="@{/image/backgroundLoginAd.jpg}" style="width:100%; height: 618px;"/>
+</div>
+
+<!--main form-->
+<form id="form" action="#" th:action="@{/createUser}" th:object="${dtoUser}" method="post">
+<!--Register account-->
+<div class="tag1">
+<div class="animated bounceInDown">
+  <div class="container">
+    
+    <!-- <span class="error animated tada" id="msg"></span> -->
+    <div class="box" >
+
+<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: white; background-color: red; padding: 8px; margin-top:-60px; font-style:italic; font-size:16px; margin-top:-60px; position: absolute; width: 100%; left: 0px;">Error</span>	
+
+      <h4>USER<span>Dashboard</span></h4>
+      <br>
+      <h5>Register a new account.</h5>
+
+      <span><button class="resetBtn" type="reset" name="reset"><i class="fas fa-sync-alt"></i> Reset</button></span>
+
+        <input th:field="*{mailUser}" id="email" type="text" name="mailUser" placeholder="Email" autocomplete="off" onmouseleave="errorMail()"/>
+          <div id="errorMail" class="errorEmail"></div>
+        <input id="password1" type="password" placeholder="Passsword" onmouseleave="errorPwd1()"/>          
+          <span id="errorPwd1" class="errorPassword1"></span>
+        <input th:field="*{passwordUser}" id="password2" type="password" name="passwordUser" placeholder="Passsword again" onmouseleave="errorPwd2()"/>
+          <span id="errorPwd2" class="errorPassword2"></span>
+         
+        
+
+      </div>
+
+  </div> 
+
+
+</div> 
+</div>
+<!-- -->
+
+
+<!--Information-->
+<div class="tag2">
+  <div class="animated bounceInDown">
+    <div class="container2">
+      
+      <div class="box2">
+  <div class="content">
+    <h4>INFORMATION</h4>
+        <br>
+        <h5>Please provide your information.</h5>
+          <input th:field="*{nameUser}" id="nameUser" type="text" name="nameUser" placeholder="Enter your name" onmouseleave="errorName()"/>
+          <span id="errorName" class="errorName" ></span>
+          <input th:field="*{phone}" id="phone" type="text" name="phone" placeholder="Enter your phone number" onmouseleave="errorPhone()"/>
+          <span id="errorPhone" class="errorPhone"></span>
+          <input th:field="*{addressUser}" id="address" type="text" name="addressUser" placeholder="Enter your address" onmouseleave="errorAddress()"/>
+          <span id="errorAddress" class="errorAddress"></span>
+
+
+        <div class="gender">
+          <p>Gender: </p>
+          <select name="genderUser" th:field="*{genderUser}">
+            <!-- <option disabled="disabled">Gender</option> -->
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+        </div>
+        
+        <div class="userRole">
+            <p>User role: </p>
+            <select name="roleUser" th:field="*{roleUser}">
+              <option value="customer">Customer</option>
+              <option value="admin">Admin</option>
+              </select>
+        </div>
+
+        <div class="birthDay">
+          <p>Your birth day: </p>
+
+          <div class="day">
+          <select name="dayBD" th:field="*{dayBD}">
+            <option value="day">Day</option>
+            <option value="1">1</option> <option value="2">2</option> <option value="3">3</option>
+            <option value="4">4</option> <option value="5">5</option> <option value="6">6</option>
+            <option value="7">7</option> <option value="8">8</option> <option value="9">9</option>
+            <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+            <option value="13">13</option> <option value="14">14</option> <option value="15">15</option>
+            <option value="16">16</option> <option value="17">17</option> <option value="18">18</option>
+            <option value="19">19</option> <option value="20">20</option> <option value="21">21</option>
+            <option value="22">22</option> <option value="23">23</option> <option value="24">24</option>
+            <option value="25">25</option> <option value="26">26</option> <option value="27">27</option>
+            <option value="28">28</option> <option value="29">29</option> <option value="30">30</option>
+            </select>
+          </div>
+          
+          <div class="month">
+            <select name="monthBD" th:field="*{monthBD}">
+              <option value="month">Month</option>
+              <option value="1">1</option> <option value="2">2</option> <option value="3">3</option>
+              <option value="4">4</option> <option value="5">5</option> <option value="6">6</option>
+              <option value="7">7</option> <option value="8">8</option> <option value="9">9</option>
+              <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+              </select>
+            </div>
+
+            <div class="year">
+            <select name="yearBD" th:field="*{yearBD}">
+              <option value="year">Year</option>
+              <option value="2006">2006</option> <option value="2005">2005</option> <option value="2004">2004</option>
+              <option value="2003">2003</option> <option value="2002">2002</option> <option value="2001">2001</option>
+              <option value="2000">2000</option> <option value="1999">1999</option> <option value="1998">1998</option>
+              <option value="1997">1997</option> <option value="1996">1996</option> <option value="1995">1995</option>
+              <option value="1994">1994</option> <option value="1993">1993</option> <option value="1992">1992</option>
+              <option value="1991">1991</option> <option value="1990">1990</option> <option value="1989">1989</option>
+              <option value="1988">1988</option> <option value="1987">1987</option> <option value="1986">1986</option>
+              <option value="1985">1985</option> <option value="1984">1984</option> <option value="1983">1983</option>
+              <option value="1982">1982</option> <option value="1981">1981</option> <option value="1980">1980</option>
+              <option value="1979">1979</option> <option value="1978">1978</option> <option value="1977">1977</option>
+              <option value="1976">1976</option> <option value="1975">1975</option> <option value="1974">1974</option>
+              <option value="1973">1973</option> <option value="1972">1972</option> <option value="1971">1971</option>
+              <option value="1970">1970</option> <option value="1969">1969</option> <option value="1968">1968</option>
+              <option value="1967">1967</option> <option value="1966">1966</option> <option value="1965">1965</option>
+              <option value="1964">1964</option> <option value="1963">1963</option> <option value="1962">1962</option>
+              <option value="1961">1961</option> <option value="1960">1960</option> <option value="1959">1959</option>
+              <option value="1958">1958</option> <option value="1957">1957</option> <option value="1956">1956</option>
+              <option value="1955">1955</option> <option value="1954">1954</option> <option value="1953">1953</option>
+              <option value="1952">1952</option> <option value="1951">1951</option> <option value="1950">1950</option>
+              
+            </select>
+            </div>    
+
+          <!-- <input class="day" type="text" placeholder="Day"  autocomplete="off"/>
+          <input class="month" type="text" placeholder="Month"  autocomplete="off"/>
+          <input class="year" type="text" placeholder="Year"  autocomplete="off"/> -->
+      </div>
+
+
+
+
+  </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---->
+
+<div class="btn-signup">
+
+  <button id="btnCreateUser" class="btnCreateUser btn12" type="submit">Create User</button>
+  <button id="warning" class="warning" onclick="checkuser()" type="button">Submit</button>
+  
+<div class="foot"> <a th:href="@{login}" target="_blank" >Sign in  </a> <i class="fa fa-heart pulse heart"></i> 
+<a href="https://www.facebook.com/ntcong120620" target="_blank"> By Thanh Cong</a></div>
+
+
+</div>
+
+</form>
+<!---->
+
+
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="#" th:src="@{/js/register2.js}"></script>
+
+
+</body>
+</html>
