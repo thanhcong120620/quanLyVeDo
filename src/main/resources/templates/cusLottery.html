@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- CSS only -->
+     <link rel="stylesheet" href="#" th:href="@{/css/bootstrap5-2-2.css}" 
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/cusLottery.css}" />
+     <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/headerfooter.css}" />
+     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"> -->
+     <link rel="stylesheet"th:href="@{/css/bootstrap5-2-2.css}" >
+     
+     <!-- Font aware some -->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css?fbclid=IwAR1YsW4Cd3uJltNc6k1kJ8R9VzNjmSXk9rjmW32BPoA6LWxNrZBCUY-D4i8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+    <title>CusLottery2</title>
+    
+    
+</head>
+<body>
+    
+<!-- Header  -->
+<div th:include ="~{/header :: header}"></div>
+
+
+<div class="row">
+
+    <!-- left (.col- & .col-md- & .col-xl-) # lottery management side bar -->
+    <div class="col-12 col-md-4 col-xl-3 leftMain ">
+
+        <div id="beforelogin">
+            <h3>Welcome </h3>
+            <p><span>[[${nameUser}]]</span></p>
+        </div>
+        <hr>
+        <div id="afterlogin">
+            <h5>Đăng nhập để lưu thông tin</h5>
+        </div>
+
+<!--Get error from server-->
+<span th:if="${errorMessage}" th:text="${errorMessage}" class="error">Error</span>
+<span></span>
+
+        <!--Login-->
+        <form action="#" th:action="@{/loginCusHistory}" th:object="${dtoUser}" method="post">
+            <table class="tableLogin">
+                <thead>
+                    <!--Row 1-->
+                    <tr>
+                        <td style="width:50%">Tài khoản:</td>
+                        <td style="width:50%">
+                            <input th:field="*{mailUser}" id="email" onmouseleave="errorMail()" type="text" name="mailUser" placeholder="Nhập tên đăng nhập"/>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="errorMail" class="errorEmail"></div>
+                        </td>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td>Mật khẩu:</td>
+                        <td>
+                            <input th:field="*{passwordUser}" id="password1" onmouseleave="errorPassword()" type="password" name="passwordUser" placeholder="Nhập mật khẩu" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span id="errorPwd1" class="errorPassword1"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="eyePass">
+                                <button type="button" id="btnPassword1">
+                                  <span class="fas fa-eye"></span>
+                                  <span class="tp">Display password</span>
+                                </button>  
+                                
+                              </div> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="leftItem">
+                            <button type="submit">Đăng nhập</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="leftItem">
+                            <span><a th:href="@{/register}">Đăng ký tại đây</a></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span><a th:href="@{/passwordSupport}">Quên mật khẩu</a></span>
+                        </td>
+                    </tr>
+    
+                </tbody>                
+            </table>
+        </form>
+    
+        <div class="leftBottom">
+            <ul>
+               <li><i class="fas fa-power-off"></i><br/><button><a th:href="@{/logOutCusHistory}">Đăng xuất</a></button></li>
+            </ul>
+        </div>  
+    
+    
+    </div><!-- left -->
+
+
+
+
+
+    
+<div class="col-12 col-md-8 col-xl-9 rightTotal"> <!-- right total ----------------------------->
+    
+    <!-- mid (.col- & .col-md- & .col-xl-) # table of win code -->
+      <div class="col-12 col-md-12 col-xl-8 rightMain">
+ 
+        
+        <table class="tableInfor">
+            <thead>
+                <!--Row 1-->
+                <tr>
+                    <td style="width:30%">Tên đăng nhập:</td>
+                    <td style="width:70%">
+                        <span>[[${mailUser}]]</span>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Tên người dùng:</td>
+                    <td>
+                        <span><span>[[${nameUser}]]</span></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>
+                        <span><span>[[${phone}]]</span></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ:</td>
+                    <td>
+                        <span><span>[[${addressUser}]]</span></span>
+                    </td>
+                </tr>
+
+            </tbody>                
+        </table>
+    
+<hr>
+
+        <!--CusHistory Form-->
+    <form action="#" th:action="@{/cusHistory/deleteMany}" th:object="${deleteTotalUser}" method="post">
+        <div class="deletePanel" onmouseleave="FN2()">
+            <input onmouseleave="FN()" id="deleteTotal" type="text" name="deleteTotalUser" placeholder="Nhập các ID để xóa: ID1-ID2-ID3- . . . . ." />
+            <button onclick="Delete()" id="btnDelete" type="submit">Xóa hàng loạt</button>
+            <p id="error"></p>
+            <span id="error2"></span>
+        </div>
+        
+ <!--Get error from server-->
+<span th:if="${errorDelete}" th:text="${errorDelete}" class="error">Error</span>
+
+        <div class="dataCusHis">
+            <table class="table table-bordered">
+                <thead>
+                   <tr>
+                      <th style="width: 2%">ID</th>
+                      <th style="width: 3%">Mã dò</th>
+                      <th style="width: 12%">Ngày dò</th>
+                      <th style="width: 12%">Ngày Xổ</th>
+                      <th style="width: 18%">Tỉnh dò</th>
+                      <th style="width: 15%">Kết quả</th>
+                      <th style="width: 3%">Xóa</th>
+                      
+                   </tr>
+                </thead>
+    
+                <tbody>
+                
+                
+                   <tr th:each="dto : ${listCusLottery}">
+                   <!-- <tr th:each="dto : ${dtoUserList}"> -->
+                   	  <td th:text="${dto.chID}">ID</td>                  	  
+                   	  <td th:text="${dto.codeDrawCH}">123456</td>
+                   	  <td>
+                    	<span th:text="${dto.dayDraw}"></span>/<span th:text="${dto.monthDraw}"></span>/<span th:text="${dto.yearDraw}"></span>
+                      </td>
+          			  <td>
+                    	<span th:text="${dto.dayCH}"></span>/<span th:text="${dto.monthCH}"></span>/<span th:text="${dto.yearCH}"></span>
+                      </td>
+
+                      <td th:text="${dto.province}">Thành phố Hồ Chí Minh</td>
+                      <td th:text="${dto.status}">Không trúng</td>
+                      <td class="i">
+                      <!--<a href="#">-->
+                         <a th:href="@{/cusHistory/deleteCusHistory/{id}(id=${dto.chID})}" class="delete" data-confirm="Bạn có chắc muốn xóa lịch sử này?">
+                        <i class="far fa-trash-alt"></i></a>
+                     </td>
+                   </tr>
+
+                   
+
+                </tbody>
+             </table>
+             
+<!-- pagination start -->
+<div th:if="${totalPages > 1}">
+    <div class="row col-sm-10">
+        <!--
+        <div class="col-sm-2">
+            Total Rows: [[${totalItems}]]
+        </div>
+        -->
+                <div class="col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/cusHistory/page/' + ${currentPage + 1}}">Next</a>
+            <span th:unless="${currentPage < totalPages}">Next</span>
+        </div>
+
+        <div class="col-sm-1">
+            <a th:if="${currentPage < totalPages}" th:href="@{'/cusHistory/page/' + ${totalPages}}">Last</a>
+            <span th:unless="${currentPage < totalPages}">Last</span>
+        </div>
+        <div class="col-sm-10">
+            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/cusHistory/page/' + ${i}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+            </span>
+        </div>
+
+    </div>
+</div>
+
+<!-- pagination end -->              
+             
+        </div>
+    
+    </form>
+     <!-- mid -->
+    </div>
+
+
+<!-- right (.col- & .col-md- & .col-xl-) # lottery management side bar -->
+<div class="col-12 col-md-12 col-xl-4 midMain">
+    <form action="#" th:action="@{/cusHistory/drawAndSave}" th:object="${dtoUser}" method="post">
+        <table class="tableDraw">
+            <thead>
+                <!--Row 1-->
+                <tr>
+                    <td style="width:30%">Mã dò:</td>
+                    <td style="width:70%">
+                        <input th:field="*{codeDrawCH}" id="codeDraw" onmouseleave="errorCodeDraw()" type="text" name="codeDrawCH" placeholder="Nhập mã trên vé của bạn"/>
+                        <span id="errorcodeDraw"></span>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Tỉnh dò:</td>
+                    <td>
+                        <div>
+                            <select id="regionCity" name="province" th:field="*{province}">
+                                    <option value="Hà Nội">Hà Nội</option>
+                                    <option value="Hải Phòng">Hải Phòng</option>
+
+                                    <option value="Đà Nẵng">Đà Nẵng</option>
+                                    <option value="Đăk Lăk">Đăk Lăk</option>
+
+                                    <option id="mienNam" value="Thành phố Hồ Chí Minh">Thành phố Hồ Chí Minh</option>
+                                    <option value="Cần Thơ">Cần Thơ</option>
+
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ngày:</td>
+                    <td>
+                        <div class="day">
+                            <select name="dayCH" th:field="*{dayCH}">
+                                <option value="1">1</option> <option value="2">2</option> <option value="3">3</option>
+                                <option value="4">4</option> <option value="5">5</option> <option value="6">6</option>
+                                <option value="7">7</option> <option value="8">8</option> <option value="9">9</option>
+                                <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+                                <option value="13">13</option> <option value="14">14</option> <option value="15">15</option>
+                                <option value="16">16</option> <option value="17">17</option> <option value="18">18</option>
+                                <option value="19">19</option> <option value="20">20</option> <option value="21">21</option>
+                                <option value="22">22</option> <option value="23">23</option> <option value="24">24</option>
+                                <option value="25">25</option> <option value="26">26</option> <option value="27">27</option>
+                                <option value="28">28</option> <option value="29">29</option> <option value="30">30</option>
+                                </select>
+                        </div>      
+                                         
+                        <div class="month">
+                            <select name="monthCH" th:field="*{monthCH}">
+                                <option value="1">1</option> <option value="2">2</option> <option value="3">3</option>
+                                <option value="4">4</option> <option value="5">5</option> <option value="6">6</option>
+                                <option value="7">7</option> <option value="8">8</option> <option value="9">9</option>
+                                <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+                            </select>
+                        </div>
+                        
+                        <div class="year">
+                            <select name="year" th:field="*{yearCH}">
+                                <option value="2000">2000</option> <option value="2001">2001</option> <option value="2002">2002</option>
+                                <option value="2003">2003</option> <option value="2004">2004</option> <option value="2005">2005</option>
+                                <option value="2006">2006</option> <option value="2007">2007</option> <option value="2008">2008</option>
+                                <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option>
+                                <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option>
+                                <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
+                                <option value="2018">2018</option> <option value="2019">2019</option> <option value="2020">2020</option>
+                                <option value="2021">2021</option> <option value="2022">2022</option> <option value="2023">2023</option>
+                
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="btnDraw" colspan="2" class="rigthItem">
+                        <button type="submit">Dò</button>
+                    </td>
+                </tr>	
+                
+                 <tr>
+                 	<td colspan="2" class="rigthItem">
+ 						<!--Get error from server-->
+						<span th:if="${drawError}" th:text="${drawError}" class="error">Error</span>
+        				<span class="rigthItemResult" th:if="${resultDraw}" style="font-size: 15px; font-weight: bold;">[[${resultDraw}]]</span>
+                    </td>
+                </tr>			
+
+            </tbody>                
+        </table>
+       
+        
+    </form>
+
+</div><!-- right -->
+
+</div><!-- right total -->
+    
+    </div> <!-- row -->
+
+
+
+
+
+
+
+
+
+
+<!-- Footer  -->
+<div th:include ="~{/footer :: footer}"></div>
+
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="#" th:src="@{/js/cusLottery.js}"></script>
+<script src="#" th:src="@{/js/headerfooter.js}"></script>
+
+</body>
+</html>
