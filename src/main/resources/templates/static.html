@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+<!-- CSS only -->
+     <link rel="stylesheet" href="#" th:href="@{/css/bootstrap5-2-2.css}" 
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/static.css}" />
+     <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/headerfooter.css}" />
+     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"> -->
+     <link rel="stylesheet"th:href="@{/css/bootstrap5-2-2.css}" >
+     
+     <!-- Font aware some -->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css?fbclid=IwAR1YsW4Cd3uJltNc6k1kJ8R9VzNjmSXk9rjmW32BPoA6LWxNrZBCUY-D4i8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+
+    <title>Trang thống kê</title>
+    
+</head>
+<body>
+
+<!-- Header  -->
+<div style="width:100%;" th:include ="~{/header :: header}"></div>
+
+
+<div class="row">
+    <!-- left (.col- & .col-md- & .col-xl-) # lottery management side bar -->
+    <div class="col-12 col-md-12 col-xl-4 leftMain">
+      
+      <div class="leftLine1">
+         <div class="tableStatic">
+            <h5>Số đuôi xuất hiện nhiều nhất 30 ngày qua</h5>
+            <hr>
+            <form>
+                <table>
+                    <thead>
+                        <!--Row 1-->
+                        <tr>
+                            <th style="width:50%">Số đuôi</th>
+                            <th></th>
+                            <th style="width:50%">Tần suất xuất hiện</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody>              
+                        <tr>
+                            <td><i class="fab fa-wizards-of-the-coast"></i> <span>[[${numTop1}]]</span></td>
+                            <td></td>
+                            <td><span>[[${frequencyTop1}]]</span> lượt (<span>[[${percent1}]]</span>%)</td>
+                        </tr>
+        
+                        <tr>
+                            <td><i class="fab fa-wizards-of-the-coast"></i> <span>[[${numTop2}]]</span></td>
+                            <td></td>
+                            <td><span>[[${frequencyTop2}]]</span> lượt (<span>[[${percent2}]]</span>%)</td>
+                        </tr>
+   
+                        <tr>
+                            <td><i class="fab fa-wizards-of-the-coast"></i> <span>[[${numTop3}]]</span></td>
+                            <td></td>
+                            <td><span>[[${frequencyTop3}]]</span> lượt (<span>[[${percent3}]]</span>%)</td>
+                        </tr>
+                        
+                        <tr>
+                           <td><i class="fab fa-wizards-of-the-coast"></i> <span>[[${numTop4}]]</span></td>
+                           <td></td>
+                           <td><span>[[${frequencyTop4}]]</span> lượt (<span>[[${percent4}]]</span>%)</td>
+                       </tr>
+                        
+                        <tr>
+                           <td><i class="fab fa-wizards-of-the-coast"></i> <span>[[${numTop5}]]</span></td>
+                           <td></td>
+                           <td><span>[[${frequencyTop5}]]</span> lượt (<span>[[${percent5}]]</span>%)</td>
+                       </tr>
+   
+                    </tbody>
+                </table>
+            </form>
+        </div> 
+      </div>
+
+      <div class="leftLine2">
+         <p>
+            Theo thống kê từ số vé phát hành trong một ngày thì tỷ lệ để thắng được giải độc đắc của xổ số kiến 
+            thiết sẽ rơi vào khoảng 1:1.000.000. Nghĩa là cứ trong 1 triệu vé số được phát hành và cung cấp ra thị 
+            trường chỉ có duy nhất 1 vé có cơ hội trúng. Mặc dù phần trăm không cao, thế nhưng hầu như ngày nào thì 
+            cũng có người trúng số.
+         </p>
+         <div class="content1">
+            <h5>Tỷ lệ trúng vé số trực tiếp xổ số miền Nam và miền Trung</h5>
+            <p>Giải đặc biệt của kết quả xổ số miền trung và miền nam bao gồm 06 chữ số. Vậy nên trong một lần phát 
+               hành, các Công ty TNHH Xổ số kiến thiết tại 2 miền sẽ phát hành tương đương 1.000.000 vé/ngày ra thị 
+               trường, trong đó chắc chắn sẽ có 01 giải độc đắc 2 tỷ đồng.
+               => Chính vì thế, tỷ lệ trúng giải độc đắc/giải đặc biệt của 2 miền này sẽ rơi vào khoảng 1/1.000.000.
+            </p>
+         </div>
+         <div class="content2">
+            <h5>Tỷ lệ trúng vé số miền Bắc</h5>
+            <p>Giải đặc biệt của XSMB khác biệt so với 2 miền còn lại có 05 chữ số. Vậy nên tỷ lệ trúng sẽ là 
+               1/100.000. Tuy nhiên, để bảo đảm doanh thu, lợi nhuận tối đa mà các công ty phát hành xổ số sẽ tăng 
+               số lượng vé lên, đồng nghĩa với việc số lượng giải đặc biệt có trong các tờ vé số đó cũng sẽ được 
+               tăng lên.
+               Cụ thể, giả định mỗi ngày tại Miền Bắc sẽ phát hành 1 triệu vé ra thị trường, trong đó sẽ có 1 giải 
+               đặc biệt (số lượng vé số nhận giải là 03) nên khả năng giành được chiến thắng sau cùng của mọi người 
+               sẽ là: (1 x 3)/1.000.000 = 3/1.000.000.
+            </p>
+         </div>
+      </div>
+
+    </div><!-- left -->
+
+    
+
+
+
+
+    <!-- right (.col- & .col-md- & .col-xl-) # table of win code -->
+
+    <div class="col-12 col-md-12 col-xl-8 rightMain">
+        
+      <div class="tableFrequency">
+         <form>
+             <table>
+                 <thead>
+                                                  <!--Row 1-->
+                     <tr>
+                         <td style="width:5%"><span class="bol30 bol30_0">00</span></td>
+                         <td style="width:16%"><span>[[${frequency00}]]</span> lượt (<span>[[${percent00}]]</span>%)</td>
+                         <td></td>
+                         <td style="width:5%"><span class="bol30 bol30_1">01</span></td>
+                         <td style="width:16%"><span>[[${frequency01}]]</span> lượt (<span>[[${percent01}]]</span>%)</td>
+                         <td></td>
+                         <td style="width:5%"><span class="bol30 bol30_2">02</span></td>
+                         <td style="width:16%"><span>[[${frequency02}]]</span> lượt (<span>[[${percent02}]]</span>%)</td>
+                         <td></td>
+                         <td style="width:5%"><span class="bol30 bol30_3">03</span></td>
+                         <td style="width:16%"><span>[[${frequency03}]]</span> lượt (<span>[[${percent03}]]</span>%)</td>
+                     </tr>
+                    
+                 </thead>
+     
+                 <tbody>   
+                                             <!--Row 2-->           
+                     <tr>
+                        <td><span class="bol30 bol30_4">04</span></td>
+                        <td><span>[[${frequency04}]]</span> lượt (<span>[[${percent04}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">05</span></td>
+                        <td><span>[[${frequency05}]]</span> lượt (<span>[[${percent05}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_6">06</span></td>
+                        <td><span>[[${frequency06}]]</span> lượt (<span>[[${percent06}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">07</span></td>
+                        <td><span>[[${frequency07}]]</span> lượt (<span>[[${percent07}]]</span>%)</td>
+                     </tr>
+                                        <!--Row 3-->
+                     <tr>
+                        <td><span class="bol30 bol30_8">08</span></td>
+                        <td><span>[[${frequency08}]]</span> lượt (<span>[[${percent08}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">09</span></td>
+                        <td><span>[[${frequency09}]]</span> lượt (<span>[[${percent09}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_0">10</span></td>
+                        <td><span>[[${frequency10}]]</span> lượt (<span>[[${percent10}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">11</span></td>
+                        <td><span>[[${frequency11}]]</span> lượt (<span>[[${percent11}]]</span>%)</td>
+                     </tr>
+                                        <!--Row 4-->
+                     <tr>
+                        <td><span class="bol30 bol30_2">12</span></td>
+                        <td><span>[[${frequency12}]]</span> lượt (<span>[[${percent12}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">13</span></td>
+                        <td><span>[[${frequency13}]]</span> lượt (<span>[[${percent13}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_4">14</span></td>
+                        <td><span>[[${frequency14}]]</span> lượt (<span>[[${percent14}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">15</span></td>
+                        <td><span>[[${frequency15}]]</span> lượt (<span>[[${percent15}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 5-->
+                     <tr>
+                        <td><span class="bol30 bol30_6">16</span></td>
+                        <td><span>[[${frequency16}]]</span> lượt (<span>[[${percent16}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">17</span></td>
+                        <td><span>[[${frequency17}]]</span> lượt (<span>[[${percent17}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_8">18</span></td>
+                        <td><span>[[${frequency18}]]</span> lượt (<span>[[${percent18}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">19</span></td>
+                        <td><span>[[${frequency19}]]</span> lượt (<span>[[${percent19}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 6-->
+                     <tr>
+                        <td><span class="bol30 bol30_0">20</span></td>
+                        <td><span>[[${frequency20}]]</span> lượt (<span>[[${percent20}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">21</span></td>
+                        <td><span>[[${frequency21}]]</span> lượt (<span>[[${percent21}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_2">22</span></td>
+                        <td><span>[[${frequency22}]]</span> lượt (<span>[[${percent22}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">23</span></td>
+                        <td><span>[[${frequency23}]]</span> lượt (<span>[[${percent23}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 7-->
+                     <tr>
+                        <td><span class="bol30 bol30_4">24</span></td>
+                        <td><span>[[${frequency24}]]</span> lượt (<span>[[${percent24}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">25</span></td>
+                        <td><span>[[${frequency25}]]</span> lượt (<span>[[${percent25}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_6">26</span></td>
+                        <td><span>[[${frequency26}]]</span> lượt (<span>[[${percent26}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">27</span></td>
+                        <td><span>[[${frequency27}]]</span> lượt (<span>[[${percent27}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 8-->
+                     <tr>
+                        <td><span class="bol30 bol30_8">28</span></td>
+                        <td><span>[[${frequency28}]]</span> lượt (<span>[[${percent28}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">29</span></td>
+                        <td><span>[[${frequency29}]]</span> lượt (<span>[[${percent29}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_0">30</span></td>
+                        <td><span>[[${frequency30}]]</span> lượt (<span>[[${percent30}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">31</span></td>
+                        <td><span>[[${frequency31}]]</span> lượt (<span>[[${percent31}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 9-->
+                     <tr>
+                        <td><span class="bol30 bol30_2">32</span></td>
+                        <td><span>[[${frequency32}]]</span> lượt (<span>[[${percent32}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">33</span></td>
+                        <td><span>[[${frequency33}]]</span> lượt (<span>[[${percent33}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_4">34</span></td>
+                        <td><span>[[${frequency34}]]</span> lượt (<span>[[${percent34}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">35</span></td>
+                        <td><span>[[${frequency35}]]</span> lượt (<span>[[${percent35}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 10-->
+                     <tr>
+                        <td><span class="bol30 bol30_6">36</span></td>
+                        <td><span>[[${frequency36}]]</span> lượt (<span>[[${percent36}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">37</span></td>
+                        <td><span>[[${frequency37}]]</span> lượt (<span>[[${percent37}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_8">38</span></td>
+                        <td><span>[[${frequency38}]]</span> lượt (<span>[[${percent38}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">39</span></td>
+                        <td><span>[[${frequency39}]]</span> lượt (<span>[[${percent39}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 11-->
+                     <tr>
+                        <td><span class="bol30 bol30_0">40</span></td>
+                        <td><span>[[${frequency40}]]</span> lượt (<span>[[${percent40}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">41</span></td>
+                        <td><span>[[${frequency41}]]</span> lượt (<span>[[${percent41}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_2">42</span></td>
+                        <td><span>[[${frequency42}]]</span> lượt (<span>[[${percent42}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">43</span></td>
+                        <td><span>[[${frequency43}]]</span> lượt (<span>[[${percent43}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 12-->
+                     <tr>
+                        <td><span class="bol30 bol30_4">44</span></td>
+                        <td><span>[[${frequency44}]]</span> lượt (<span>[[${percent44}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">45</span></td>
+                        <td><span>[[${frequency45}]]</span> lượt (<span>[[${percent45}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_6">46</span></td>
+                        <td><span>[[${frequency46}]]</span> lượt (<span>[[${percent46}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">47</span></td>
+                        <td><span>[[${frequency47}]]</span> lượt (<span>[[${percent47}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 13-->
+                     <tr>
+                        <td><span class="bol30 bol30_8">48</span></td>
+                        <td><span>[[${frequency48}]]</span> lượt (<span>[[${percent48}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">49</span></td>
+                        <td><span>[[${frequency49}]]</span> lượt (<span>[[${percent49}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_0">50</span></td>
+                        <td><span>[[${frequency50}]]</span> lượt (<span>[[${percent50}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">51</span></td>
+                        <td><span>[[${frequency51}]]</span> lượt (<span>[[${percent51}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 14-->
+                     <tr>
+                        <td><span class="bol30 bol30_2">52</span></td>
+                        <td><span>[[${frequency52}]]</span> lượt (<span>[[${percent52}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">53</span></td>
+                        <td><span>[[${frequency53}]]</span> lượt (<span>[[${percent53}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_4">54</span></td>
+                        <td><span>[[${frequency54}]]</span> lượt (<span>[[${percent54}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">55</span></td>
+                        <td><span>[[${frequency55}]]</span> lượt (<span>[[${percent55}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 15-->
+                     <tr>
+                        <td><span class="bol30 bol30_6">56</span></td>
+                        <td><span>[[${frequency56}]]</span> lượt (<span>[[${percent56}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">57</span></td>
+                        <td><span>[[${frequency57}]]</span> lượt (<span>[[${percent57}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_8">58</span></td>
+                        <td><span>[[${frequency58}]]</span> lượt (<span>[[${percent58}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">59</span></td>
+                        <td><span>[[${frequency59}]]</span> lượt (<span>[[${percent59}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 16-->
+                     <tr>
+                        <td><span class="bol30 bol30_0">60</span></td>
+                        <td><span>[[${frequency60}]]</span> lượt (<span>[[${percent60}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">61</span></td>
+                        <td><span>[[${frequency61}]]</span> lượt (<span>[[${percent61}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_2">62</span></td>
+                        <td><span>[[${frequency62}]]</span> lượt (<span>[[${percent62}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">63</span></td>
+                        <td><span>[[${frequency63}]]</span> lượt (<span>[[${percent63}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 17-->
+                     <tr>
+                        <td><span class="bol30 bol30_4">64</span></td>
+                        <td><span>[[${frequency64}]]</span> lượt (<span>[[${percent64}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">65</span></td>
+                        <td><span>[[${frequency65}]]</span> lượt (<span>[[${percent65}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_6">66</span></td>
+                        <td><span>[[${frequency66}]]</span> lượt (<span>[[${percent66}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">67</span></td>
+                        <td><span>[[${frequency67}]]</span> lượt (<span>[[${percent67}]]</span>%)</td>
+                        <td></td>
+                     </tr>
+                                       <!--Row 18-->
+                     <tr>
+                        <td><span class="bol30 bol30_8">68</span></td>
+                        <td><span>[[${frequency68}]]</span> lượt (<span>[[${percent68}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">69</span></td>
+                        <td><span>[[${frequency69}]]</span> lượt (<span>[[${percent69}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_0">70</span></td>
+                        <td><span>[[${frequency70}]]</span> lượt (<span>[[${percent70}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">71</span></td>
+                        <td><span>[[${frequency71}]]</span> lượt (<span>[[${percent71}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 19-->
+                     <tr>
+                        <td><span class="bol30 bol30_2">72</span></td>
+                        <td><span>[[${frequency72}]]</span> lượt (<span>[[${percent72}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">73</span></td>
+                        <td><span>[[${frequency73}]]</span> lượt (<span>[[${percent73}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_4">74</span></td>
+                        <td><span>[[${frequency74}]]</span> lượt (<span>[[${percent74}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">75</span></td>
+                        <td><span>[[${frequency75}]]</span> lượt (<span>[[${percent75}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 20-->
+                     <tr>
+                        <td><span class="bol30 bol30_6">76</span></td>
+                        <td><span>[[${frequency76}]]</span> lượt (<span>[[${percent76}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">77</span></td>
+                        <td><span>[[${frequency77}]]</span> lượt (<span>[[${percent77}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_8">78</span></td>
+                        <td><span>[[${frequency78}]]</span> lượt (<span>[[${percent78}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">79</span></td>
+                        <td><span>[[${frequency79}]]</span> lượt (<span>[[${percent79}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 21-->
+                     <tr>
+                        <td><span class="bol30 bol30_0">80</span></td>
+                        <td><span>[[${frequency80}]]</span> lượt (<span>[[${percent80}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">81</span></td>
+                        <td><span>[[${frequency81}]]</span> lượt (<span>[[${percent81}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_2">82</span></td>
+                        <td><span>[[${frequency82}]]</span> lượt (<span>[[${percent82}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">83</span></td>
+                        <td><span>[[${frequency83}]]</span> lượt (<span>[[${percent83}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 22-->
+                     <tr>
+                        <td><span class="bol30 bol30_4">84</span></td>
+                        <td><span>[[${frequency84}]]</span> lượt (<span>[[${percent84}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">85</span></td>
+                        <td><span>[[${frequency85}]]</span> lượt (<span>[[${percent85}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_6">86</span></td>
+                        <td><span>[[${frequency86}]]</span> lượt (<span>[[${percent86}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">87</span></td>
+                        <td><span>[[${frequency87}]]</span> lượt (<span>[[${percent87}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 23-->
+                     <tr>
+                        <td><span class="bol30 bol30_8">88</span></td>
+                        <td><span>[[${frequency88}]]</span> lượt (<span>[[${percent88}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">89</span></td>
+                        <td><span>[[${frequency89}]]</span> lượt (<span>[[${percent89}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_0">90</span></td>
+                        <td><span>[[${frequency90}]]</span> lượt (<span>[[${percent90}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_1">91</span></td>
+                        <td><span>[[${frequency91}]]</span> lượt (<span>[[${percent91}]]</span>%)</td>
+                     </tr>
+                                       <!--Row 24-->
+                     <tr>
+                        <td><span class="bol30 bol30_2">92</span></td>
+                        <td><span>[[${frequency92}]]</span> lượt (<span>[[${percent92}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_3">93</span></td>
+                        <td><span>[[${frequency93}]]</span> lượt (<span>[[${percent93}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_4">94</span></td>
+                        <td><span>[[${frequency94}]]</span> lượt (<span>[[${percent94}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_5">95</span></td>
+                        <td><span>[[${frequency95}]]</span> lượt (<span>[[${percent95}]]</span>%)</td>
+                     </tr>
+                                          <!--Row 25-->
+                     <tr>
+                        <td><span class="bol30 bol30_6">96</span></td>
+                        <td><span>[[${frequency96}]]</span> lượt (<span>[[${percent96}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_7">97</span></td>
+                        <td><span>[[${frequency97}]]</span> lượt (<span>[[${percent97}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_8">98</span></td>
+                        <td><span>[[${frequency98}]]</span> lượt (<span>[[${percent98}]]</span>%)</td>
+                        <td></td>
+                        <td><span class="bol30 bol30_9">99</span></td>
+                        <td><span>[[${frequency99}]]</span> lượt (<span>[[${percent99}]]</span>%)</td>
+                     </tr>
+                 </tbody>
+             </table>
+         </form>
+     </div>
+
+    </div> <!-- right -->
+
+
+<hr>    
+    <!-- conclusion (.col- & .col-md- & .col-xl-) # table of win code -->
+
+   <div class="col-12 col-md-12 col-xl-12 conclusion">
+      <div class="content">
+         <h5>Quy định về thuế thu nhập trúng xổ số:</h5>
+         <p>Tất cả vé trúng xổ số có giá trị đến 10 triệu đồng không phải đóng thuế, các giải trúng trên 10 triệu phải 
+            đóng thuế thu nhập 10% của số tiền vượt trên 10 triệu = (giải trúng - 10 triệu) x 10%.
+         </p>
+         <p> Giải trúng Đặc Biệt: 2 tỷ => Thuế thu nhập = (2.000.000.000 - 10.000.000) x 10% = 199.000.000đ<br>
+            Giải phụ Đặc Biệt: 50 triệu => Thuế thu nhập = (50.000.000 - 10.000.000) x 10% = 4.000.000đ<br>
+            Giải nhất: 30 triệu => Thuế thu nhập = (30.000.000 - 10.000.000) x 10% = 2.000.000đ  <br>     
+            Giải nhì: 15 triệu => Thuế thu nhập = (15.000.000 - 10.000.000) x 10% = 500.000đ    <br>   
+            Các giải còn lại từ 10 triệu trở xuống không phải đóng thuế dù trúng cả cặp nguyên giải ba 100 tờ = 
+            10.000.000 x 100 = 1.000.000.000đ (một tỷ đồng) cũng không phải đóng thuế nhưng lưu ý nếu 1 tờ vé trúng 
+            nhiều giải thì tính thuế tổng giá trị ví dụ tờ vé trúng cả giải ba và giải 8 trên 10 triệu => phải đóng 
+            thuế là (10.000.000 + 100.000 - 10.000.000) x 10% = 10.000đ.</p>
+      </div>
+      
+   </div>
+
+</div> <!-- row -->
+
+
+<!--  
+
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="Sign Out"/>
+</form>
+
+-->
+
+
+
+<!-- Footer  -->
+<div style="width:100%;" th:include ="~{/footer :: footer}"></div>
+
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="#" th:src="@{/js/headerfooter.js}"></script>
+
+</body>
+</html>
