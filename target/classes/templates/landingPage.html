@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap5-2-2.css}" 
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"/>
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/landingPage.css}" />
+    <link rel='stylesheet' type='text/css' media='screen' href="#" th:href="@{/css/headerNav.css}" />
+
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css?fbclid=IwAR1YsW4Cd3uJltNc6k1kJ8R9VzNjmSXk9rjmW32BPoA6LWxNrZBCUY-D4i8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+    <title>Landing page</title>
+</head>
+
+<body>
+
+    <!--Header-->
+     <div class="header">
+    		<div th:include ="~{/headerNav :: headerNav}"></div>    
+     </div>
+     
+
+    <!--Background-->
+    <div class="bg_image">
+        <img src="image/lpBackground.jpg" style="width:100%; height: 618px;"/>
+    </div>
+
+    <!--Set up time-->
+    <h5>Nhanh tay, thời gian xổ vé chỉ còn</h5>
+    <span class="time">
+        <h2><span id="demo" class="demo"></span></h2>
+    </span>
+
+    <!--Count down time-->
+    <div class=getDay>
+        <input id="getDay" value="Dec 18, 2022 17:00:00"/>
+    </div>
+
+    <!--Admin set up-->
+    <span class="btnPlay">
+        <button onclick=""><a th:href="@{/cusLottery}">Play</a></button>
+    </span>
+        
+
+<!-- JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="#" th:src="@{/js/landingPage.js}"></script>
+
+
+</body>
+</html>
