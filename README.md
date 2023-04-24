@@ -1,1 +1,2 @@
-# Test-github
+# This is a final project ocording to graduate Funix education 
+# Project use: Springboot 3x and Dependencies such as: security, oauth2, thymleaf, data jpa, mail sender ... 
